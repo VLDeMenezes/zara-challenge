@@ -6,8 +6,8 @@ interface CartGridProps {
 }
 const CartGrid: React.FC<CartGridProps> = ({ cart }) => {
   return (
-    <section className={styles["cart-grid"]} aria-label="Cart list">
-      <ul>
+    <section aria-label="Cart list">
+      <ul className={styles["cart-grid"]}>
         {cart.map((item) => (
           <li key={item.product.id}>
             <CartItem cart={item} />
