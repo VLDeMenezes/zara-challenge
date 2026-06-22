@@ -1,66 +1,41 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import ProductGrid from "@/features/catalog/components/ProductGrid/ProductGrid";
+import SearchBar from "@/features/catalog/components/SearchBar/SearchBar";
+import { productRepository } from "@/infrastructure/api/api-product-repository";
+import styles from "@/styles/page.module.css";
+import { removeDuplicates } from "@/utils/filter/array";
+import { Suspense } from "react";
 
-export default function Home() {
+type Props = {
+  searchParams: Promise<{
+    search?: string;
+    limit?: string;
+    offset?: string;
+  }>;
+};
+const HomePage = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+
+  //* LIMIT 20 IS UNIQUE FILTER DEFAULT OTHERS BY PARAMS *//
+  const filters = {
+    search: resolvedParams.search,
+    limit: resolvedParams.limit ? parseInt(resolvedParams.limit, 10) : 20,
+    offset: resolvedParams.offset
+      ? parseInt(resolvedParams.offset, 10)
+      : undefined,
+  };
+  const products = await productRepository.getAll(filters);
+  const uniqueProducts = removeDuplicates(products);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <Suspense
+          fallback={<div style={{ height: "45px" }}>Loading search...</div>}
+        >
+          <SearchBar counter={uniqueProducts.length} />
+        </Suspense>
+        <ProductGrid products={uniqueProducts} />
       </main>
     </div>
   );
-}
+};
+export default HomePage;

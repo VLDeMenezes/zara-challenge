@@ -5,5 +5,13 @@ const nextConfig: NextConfig = {
     compilationMode: "annotation",
   },
 };
-
+module.exports = {
+  images: {
+    remotePatterns: [
+      new URL(
+        "http://prueba-tecnica-api-tienda-moviles.onrender.com/images/**",
+      ),
+    ],
+  },
+};
 export default nextConfig;
