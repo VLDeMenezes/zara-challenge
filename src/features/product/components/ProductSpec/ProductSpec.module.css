@@ -1,0 +1,33 @@
+.specs-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.specs-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 0.5px solid #000000;
+  padding: 16px 0;
+}
+
+.specs-row:first-child {
+  border-top: 0.5px solid #000000;
+}
+
+.specs-label {
+  min-width: 300px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.specs-value {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 300;
+}

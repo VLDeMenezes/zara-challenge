@@ -1,0 +1,30 @@
+.similar--card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  gap: 40px;
+  margin: auto;
+}
+
+.similar--carrousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #CCCCCC;
+  padding-bottom: 40px;
+}
+
+.similar--carrousel::-webkit-scrollbar {
+  height: 1px;
+}
+
+.similar--carrousel::-webkit-scrollbar-track {
+  background-color: #CCCCCC;
+}
+
+.similar--carrousel::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}

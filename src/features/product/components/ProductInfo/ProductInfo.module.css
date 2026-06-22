@@ -1,0 +1,21 @@
+.product-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.product-card__image-wrapper {
+  max-height: 630px;
+}
+
+.product-card__info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 380px;
+  gap: 64px;
+  margin: auto;
+}
