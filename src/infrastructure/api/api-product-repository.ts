@@ -50,7 +50,6 @@ export class ApiProductRepository implements ProductRepository {
     }
 
     const dto: ApiProductDto = await response.json();
-    console.log(dto);
     return mapDtoToProduct(dto);
   }
 }
