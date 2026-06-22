@@ -1,5 +1,5 @@
 import { Product, SimilarProduct } from "@/core/entities/product";
-import { ApiProductDto } from "../dto/product.dto";
+import { ApiProductDto, APISimilarProductDto } from "../dto/product.dto";
 
 export function mapDtoToProduct(dto: ApiProductDto): Product {
   return {
@@ -35,7 +35,7 @@ export function mapDtoToProduct(dto: ApiProductDto): Product {
   };
 }
 
-function mapSimilarDtoToEntity(dto: any): SimilarProduct {
+function mapSimilarDtoToEntity(dto: APISimilarProductDto): SimilarProduct {
   return {
     id: dto.id,
     brand: dto.brand,

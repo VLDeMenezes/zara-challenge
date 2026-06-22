@@ -33,3 +33,12 @@ export interface ApiProductDto {
     imageUrl: string;
   }>;
 }
+
+export interface APISimilarProductDto {
+  id: string;
+  brand: string;
+  name: string;
+  basePrice: number;
+  imageUrl: string;
+}
+[];
