@@ -13,7 +13,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   return (
     <div className={styles["picker--wrapper"]}>
       <h4>COLOR. PICK YOUR FAVORITE.</h4>
-      <div className={styles["button-wrapper"]}>
+      <div className={styles["button-color-wrapper"]}>
         {options.map((color) => {
           const isActive = selectedColor?.name === color.name;
 

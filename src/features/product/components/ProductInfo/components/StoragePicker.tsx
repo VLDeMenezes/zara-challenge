@@ -13,7 +13,7 @@ export const StoragePicker: React.FC<StoragePickerProps> = ({
   return (
     <div className={styles["picker--wrapper"]}>
       <h4>STORAGE ¿HOW MUCH SPACE DO YOU NEED?</h4>
-      <div className={styles["button-wrapper"]}>
+      <div className={styles["button-storage-wrapper"]}>
         {options.map((storage) => {
           const isActive = selectedStorage?.capacity === storage.capacity;
 
