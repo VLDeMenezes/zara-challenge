@@ -1,0 +1,30 @@
+.product-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-card__image-wrapper {
+  position: relative;
+  width: 312px;
+  height: 257px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card__info-delete-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: baseline;
+  height: 257px;
+  font-size: 12px;
+}
+
+.product-card__info-delete-wrapper--info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
