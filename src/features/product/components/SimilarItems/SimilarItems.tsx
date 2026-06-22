@@ -8,13 +8,18 @@ const SimilarItemsCarrousel: React.FC<SimilarItemsProps> = ({
   similarItems,
 }) => {
   return (
-    <section className={styles["similar--card"]}>
+    <section
+      className={styles["similar--card"]}
+      aria-label="Similar products list"
+    >
       <h3>SIMILAR ITEMS</h3>
-      <div className={styles["similar--carrousel"]}>
+      <ul className={styles["similar--carrousel"]}>
         {similarItems.map((item) => (
-          <ProductCard product={item} key={item.id} />
+          <li key={item.id}>
+            <ProductCard product={item} />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };
