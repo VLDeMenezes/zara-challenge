@@ -26,7 +26,7 @@
   z-index: -1;
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .product-card__image-wrapper {
@@ -36,6 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .product-card__brand {

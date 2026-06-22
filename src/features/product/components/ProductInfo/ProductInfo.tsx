@@ -50,14 +50,13 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
           src={selectedColor?.imageUrl || "/placeholder.png"}
           alt={`Imagen del producto ${brand} - ${name}`}
           style={{ objectFit: "contain" }}
-          width={510}
-          height={630}
+          fill
         />
       </div>
       <div className={styles["product-card__info-wrapper"]}>
         <div>
           <h2>{name}</h2>
-          <span>From {displayedPrice} EUR</span>
+          <span className={styles[""]}>From {displayedPrice} EUR</span>
         </div>
         <StoragePicker
           options={storageOptions}

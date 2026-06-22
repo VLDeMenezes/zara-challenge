@@ -20,7 +20,7 @@
 }
 
 .specs-label {
-  min-width: 300px;
+  min-width: 150px;
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 300;
@@ -30,4 +30,10 @@
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 300;
+}
+
+@media (min-width:728px) {
+  .specs-label {
+    min-width: 300px;
+  }
 }
