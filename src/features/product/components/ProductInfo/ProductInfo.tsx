@@ -69,6 +69,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
           onSelectColor={setSelectedColor}
         />
         <Button
+          data-testid="add-to-cart"
           aria-label={`Add the ${selectedColor?.name} ${name} - ${brand} with ${selectedStorage?.capacity} `}
           onClick={handleAddToCart}
           disabled={!isReady}

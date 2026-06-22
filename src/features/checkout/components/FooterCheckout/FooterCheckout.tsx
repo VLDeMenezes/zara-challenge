@@ -22,6 +22,7 @@ const FooterCheckout: React.FC = () => {
         <div className={styles["footer__row-wrapper"]}>
           <span>TOTAL {totals.subtotal} EUR</span>
           <Button
+            data-testid="pay-button"
             aria-label="Continue to checkout"
             disabled={totals.itemsCount === 0}
             onClick={handlePay}

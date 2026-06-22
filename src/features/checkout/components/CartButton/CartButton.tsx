@@ -22,7 +22,9 @@ const CartButton: React.FC = () => {
       aria-label={ariaLabelText}
     >
       <Image src={cartIconSrc} alt="" width={24} height={24} priority />
-      <span aria-hidden="true">{totals.itemsCount}</span>
+      <span data-testid="cart-counter" aria-hidden="true">
+        {totals.itemsCount}
+      </span>
     </Link>
   );
 };

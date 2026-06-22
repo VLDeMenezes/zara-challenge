@@ -27,6 +27,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
 
           return (
             <button
+              data-testid="color-selector"
               key={color.name}
               onClick={() => onSelectColor(color)}
               style={{ backgroundColor: color.hexCode }}

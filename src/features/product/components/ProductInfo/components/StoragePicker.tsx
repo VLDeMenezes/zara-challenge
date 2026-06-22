@@ -27,6 +27,7 @@ export const StoragePicker: React.FC<StoragePickerProps> = ({
 
           return (
             <button
+              data-testid="storage-selector"
               key={storage.capacity}
               onClick={() => onSelectStorage(storage)}
               className={buttonClass}

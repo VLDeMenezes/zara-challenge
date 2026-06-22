@@ -39,6 +39,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ counter }) => {
   return (
     <div className={styles["search-wrapper"]}>
       <input
+        data-testid={"search-bar"}
         type="search"
         aria-label="Search for smartphones by brand or model"
         placeholder="Search for a smartphone..."
