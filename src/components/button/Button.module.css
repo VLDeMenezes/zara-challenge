@@ -30,7 +30,7 @@
   padding: 5px 7px;
 }
 
-/* Variante 1: Primary (Sólido Negro) */
+/* Variant Solid Black */
 .btn--primary {
   background-color: #1B1A18;
   color: #ffffff;
@@ -51,6 +51,7 @@
   color: #C2BFBC;
 }
 
+/* Variant Transparent */
 .btn--secondary {
   background-color: #ffffff;
   color: #000000;
@@ -74,8 +75,18 @@
   border-color: #DBD9D7;
 }
 
+/* Variant Destroy */
 .btn--destroy {
   background-color: #ffffff;
   color: #DF0000;
   padding: 3px 0;
+}
+
+.btn--destroy:hover:not(:disabled) {
+  color: #b80000;
+  border-color: #b80000;
+}
+
+.btn--destroy:focus-visible {
+  color: #e00707;
 }

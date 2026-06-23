@@ -1,8 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zara Challenge
 
-## Getting Started
+Application developed as a challenge for Napptilus using Next.js and TypeScript.
 
-First, run the development server:
+The proyect focus on performance, maintainability, and scalability by leveraging Server-Side Rendering (SSR), a feature-based structure, and a domain-oriented architecture.
+
+Users can browse a smartphone catalog, search products, view product details, configure variants, manage a shopping cart, and complete the checkout process.
+
+## Stack
+
+Next.js (App Router)-
+React -
+TypeScript -
+Css Modules -
+Vitest / Playwright -
+ESLint
+
+## Features
+
+- SSR product catalog rendering
+- Search using URL search parameters
+- Product detail view with variant selection (colors and storage) with price and image variations
+- Similar product section
+- Shopping cart management
+- Cart persistence using local storage
+- Checkout
+- accessibility for screen readers
+- Responsive design
+- Scalable architecture based on separation of responsibilities
+
+## Architecture
+
+The project follows a hybrid approach inspired by Clean Architecture and Feature-Based Architecture.
+
+1. CORE: The core folder contains the business domain and is independent of frameworks, APIs, or UI implementations.
+   The application depends on abstractions instead of concrete implementations.
+2. FEATURES: Business functionality is grouped by domain responsibility, each feature encapsulates its own components, hooks, context, and business logic.
+   This structure improves scalability and reduces coupling between unrelated functionalities. You can find this features:
+
+- catalog
+- product
+- checkout
+
+3. INFRASTRUCTURE: The infrastructure layer contains external implementations. API communication, DTOs definitions,DTO-to-domain mapping, Repository implementations
+
+4. PRESENTATION LAYER: The presentation layer is built using Next.js App Router. Reusable UI elements are located in the shared components folder.
+
+## Design decisions
+
+### Server-Side Rendering
+
+The product catalog is rendered on the server to improve:
+
+- Initial page load
+- SEO
+- Perceived performance
+
+### URL-Based Search State
+
+Search values are stored in URL parameters, allowing:
+
+- Shareable URLs
+- Browser navigation compatibility
+- Better SSR integration
+
+### Dependency Inversion
+
+Business logic depends on repository interfaces rather than API implementations.
+This makes the code easier to test and replace.
+
+### DTO Mapping Layer
+
+External API responses are transformed into domain entities using dedicated mappers.
+This prevents infrastructure concerns from leaking into business logic.
+
+### Feature Isolation
+
+Each business capability is organized into a dedicated feature module, making future maintenance and expansion simpler.
+
+## Running the project
+
+First, instal the dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+and then you run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +105,66 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start searching some smartphones on the search-bar, or click someone on the catalog. Then you will can choose color and storage options for the smartphone to later add to the cart and make the checkout.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You also could add or delete many items on the cart before the checkout.
 
-## Learn More
+## Create building and production server
 
-To learn more about Next.js, take a look at the following resources:
+You can create the production build with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+# or
+yarn run build
+# or
+pnpm run build
+# or
+bun run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+and after the build, you can start the app with:
 
-## Deploy on Vercel
+```bash
+npm run start
+# or
+yarn run start
+# or
+pnpm run start
+# or
+bun run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The are some unit test to ensure critical functions like mapper from dtos to entities, or remove duplicates from arrays. Besides there is a end to end test for the more important flow, the checkout, it test from the init loading of the app to the pay action on the cart.
+
+### Unit Test
+
+You can run this test with:
+
+```bash
+npm run test
+# or
+yarn run test
+# or
+pnpm run test
+# or
+bun run test
+```
+
+### End-to-End Tests
+
+Playwright is used to validate the critical user journey, you can run:
+
+```bash
+npx run playwright
+# or
+yarn run playwright
+# or
+pnpm run playwright
+# or
+bun run playwright
+```
+
+Created by @VLDeMenezes for Napptilus Company.
