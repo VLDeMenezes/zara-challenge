@@ -28,3 +28,10 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.product-cart__action-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: self-start;
+}

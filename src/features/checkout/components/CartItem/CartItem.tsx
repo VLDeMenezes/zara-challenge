@@ -3,12 +3,13 @@ import styles from "./CartItem.module.css";
 import { useCart } from "../../hook/useCart";
 import Button from "@/components/button/Button";
 import { CartItem as CartItemType } from "@/core/entities/cart";
+import QuantitySelector from "./components/QuantitySelector";
 interface CartItemProps {
   cart: CartItemType;
 }
 const CartItem: React.FC<CartItemProps> = ({ cart }) => {
   const { removeFromCart } = useCart();
-  const { product, selectedColor, selectedStorage } = cart;
+  const { product, selectedColor, selectedStorage, quantity } = cart;
   return (
     <article className={styles["product-card"]}>
       <Image
@@ -27,15 +28,20 @@ const CartItem: React.FC<CartItemProps> = ({ cart }) => {
             </span>
           </div>
 
-          <span>{selectedStorage.price} EUR</span>
+          <span>
+            {selectedStorage.price} EUR {quantity > 1 && "c/u"}
+          </span>
         </div>
-        <Button
-          aria-label={`Remove ${product.name} from the color ${selectedColor.name} and ${selectedStorage.capacity} from the cart`}
-          variant="destroy"
-          onClick={() => removeFromCart(product.id, selectedColor, selectedStorage)}
-        >
-          <span aria-hidden="true">Eliminar</span>
-        </Button>
+        <div className={styles["product-cart__action-wrapper"]}>
+          <Button
+            aria-label={`Remove ${product.name} from the color ${selectedColor.name} and ${selectedStorage.capacity} from the cart`}
+            variant="destroy"
+            onClick={() => removeFromCart(product.id, selectedColor, selectedStorage)}
+          >
+            <span aria-hidden="true">Eliminar</span>
+          </Button>
+          <QuantitySelector cart={cart} />
+        </div>
       </div>
     </article>
   );

@@ -88,7 +88,6 @@
 
 .btn--destroy:hover:not(:disabled) {
   color: #b80000;
-  border-color: #b80000;
 }
 
 .btn--destroy:focus-visible {

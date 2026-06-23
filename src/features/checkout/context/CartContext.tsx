@@ -7,6 +7,12 @@ interface CartContextType {
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (productId: string, color: ColorOption, storage: StorageOption) => void;
+  updateQuantity: (
+    productId: string,
+    color: ColorOption,
+    storage: StorageOption,
+    amount: number
+  ) => void;
   clearCart: () => void;
   totals: { subtotal: number; itemsCount: number };
 }
