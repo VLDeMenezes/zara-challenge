@@ -3,7 +3,27 @@ import SearchBar from "@/features/catalog/components/SearchBar/SearchBar";
 import { productRepository } from "@/infrastructure/api/api-product-repository";
 import styles from "@/styles/page.module.css";
 import { removeDuplicates } from "@/utils/filter/array";
+import { Metadata } from "next";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: " Zara Challenge",
+  description:
+    "Explora nuestra amplia gama de smartphones. Encuentra las mejores marcas como Samsung, Apple y más al mejor precio.",
+  keywords: [
+    "e-commerce",
+    "móviles",
+    "smartphones",
+    "comprar teléfonos",
+    "Zara challenge",
+  ],
+  openGraph: {
+    title: "Zara Challenge",
+    description:
+      "Explora nuestra amplia gama de smartphones con disponibilidad inmediata.",
+    type: "website",
+  },
+};
 
 type Props = {
   searchParams: Promise<{
