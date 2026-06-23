@@ -1,39 +1,12 @@
 "use client";
-
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import styles from "./SearchBar.module.css";
-import { useDebounce } from "@/hooks/useDebounce/useDebounce";
+import { useSearchBar } from "../../hook/useSearchBar";
 
 interface SearchBarProps {
-  counter: number;
+  initialCounter: number;
 }
-const SearchBar: React.FC<SearchBarProps> = ({ counter }) => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
-
-  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") ?? "");
-  const debouncedSearchTerm = useDebounce(searchTerm, 400);
-
-  useEffect(() => {
-    const currentSearchInUrl = searchParams.get("search") ?? "";
-    if (debouncedSearchTerm === currentSearchInUrl) {
-      return;
-    }
-
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (debouncedSearchTerm) {
-      params.set("search", debouncedSearchTerm);
-    } else {
-      params.delete("search");
-    }
-    params.delete("offset");
-
-    replace(`${pathname}?${params.toString()}`);
-  }, [debouncedSearchTerm, pathname, replace, searchParams]);
-
+const SearchBar: React.FC<SearchBarProps> = ({ initialCounter }) => {
+  const { searchTerm, setSearchTerm, count } = useSearchBar(initialCounter);
   return (
     <div className={styles["search-wrapper"]}>
       <input
@@ -46,7 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ counter }) => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <span className={styles["search-result-counter"]} aria-live="polite">
-        {counter} RESULTS
+        {count} RESULTS
       </span>
     </div>
   );

@@ -47,7 +47,7 @@ const HomePage = async ({ searchParams }: Props) => {
     <div className={styles.page}>
       <main className={styles.main}>
         <Suspense fallback={<div style={{ height: "45px" }}>Loading search...</div>}>
-          <SearchBar counter={finalCatalogProducts.length} />
+          <SearchBar initialCounter={finalCatalogProducts.length} />
         </Suspense>
         <ProductGrid initialProducts={finalCatalogProducts} />
       </main>
