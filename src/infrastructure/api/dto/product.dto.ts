@@ -41,4 +41,3 @@ export interface APISimilarProductDto {
   basePrice: number;
   imageUrl: string;
 }
-[];

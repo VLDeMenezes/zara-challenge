@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
 import { mapDtoToProduct } from "./product.mapper";
-import { spec } from "node:test/reporters";
 import { ApiProductDto } from "../dto/product.dto";
 
 describe("It should map the backend response and convert to a BasicProduct or Product interface", () => {
@@ -55,7 +54,7 @@ describe("It should map the backend response and convert to a BasicProduct or Pr
   });
 
   it("Null or undefined cases, it should provides default values when objects are missing", () => {
-    const mockFaillureDto: any = {
+    const mockFaillureDto: Partial<ApiProductDto> = {
       id: "samsung-A25",
       brand: "samsung",
       name: "A25",
@@ -65,7 +64,7 @@ describe("It should map the backend response and convert to a BasicProduct or Pr
       imageUrl: "http//imagen.jpg",
       //missing specs, color and storage options
     };
-    const result = mapDtoToProduct(mockFaillureDto);
+    const result = mapDtoToProduct(mockFaillureDto as ApiProductDto);
 
     expect(result.specs).toEqual({
       screen: "",

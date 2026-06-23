@@ -11,19 +11,19 @@ interface CartProviderProps {
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   "use memo";
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window === "undefined") return [];
 
-  useEffect(() => {
     const storedCart = localStorage.getItem("zara_cart");
     if (storedCart) {
       try {
-        setCart(JSON.parse(storedCart));
+        return JSON.parse(storedCart);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error("Error parsing cart from localStorage", error);
       }
     }
-  }, []);
+    return [];
+  });
 
   useEffect(() => {
     if (cart.length > 0) {

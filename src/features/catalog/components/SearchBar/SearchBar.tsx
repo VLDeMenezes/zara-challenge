@@ -34,7 +34,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ counter }) => {
     params.delete("offset");
 
     replace(`${pathname}?${params.toString()}`);
-  }, [debouncedSearchTerm, pathname, replace]);
+  }, [debouncedSearchTerm, pathname, replace, searchParams]);
 
   return (
     <div className={styles["search-wrapper"]}>

@@ -1,4 +1,3 @@
-import { Product } from "@/core/entities/product";
 import Image from "next/image";
 import styles from "./CartItem.module.css";
 import { useCart } from "../../hook/useCart";
