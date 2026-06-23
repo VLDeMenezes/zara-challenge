@@ -19,18 +19,14 @@ const HomePage = async ({ searchParams }: Props) => {
   const filters = {
     search: resolvedParams.search,
     limit: resolvedParams.limit ? parseInt(resolvedParams.limit, 10) : 20,
-    offset: resolvedParams.offset
-      ? parseInt(resolvedParams.offset, 10)
-      : undefined,
+    offset: resolvedParams.offset ? parseInt(resolvedParams.offset, 10) : undefined,
   };
   const products = await productRepository.getAll(filters);
   const uniqueProducts = removeDuplicates(products);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Suspense
-          fallback={<div style={{ height: "45px" }}>Loading search...</div>}
-        >
+        <Suspense fallback={<div style={{ height: "45px" }}>Loading search...</div>}>
           <SearchBar counter={uniqueProducts.length} />
         </Suspense>
         <ProductGrid products={uniqueProducts} />

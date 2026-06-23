@@ -32,9 +32,7 @@ const CartItem: React.FC<CartItemProps> = ({ cart }) => {
         <Button
           aria-label={`Remove ${product.name} from the color ${selectedColor.name} and ${selectedStorage.capacity} from the cart`}
           variant="destroy"
-          onClick={() =>
-            removeFromCart(product.id, selectedColor, selectedStorage)
-          }
+          onClick={() => removeFromCart(product.id, selectedColor, selectedStorage)}
         >
           <span aria-hidden="true">Eliminar</span>
         </Button>

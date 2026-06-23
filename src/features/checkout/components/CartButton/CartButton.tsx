@@ -16,11 +16,7 @@ const CartButton: React.FC = () => {
     ? `View cart, ${totals.itemsCount} ${totals.itemsCount === 1 ? "item" : "items"}`
     : "View empty cart";
   return (
-    <Link
-      href="/cart"
-      className={styles["cart-button"]}
-      aria-label={ariaLabelText}
-    >
+    <Link href="/cart" className={styles["cart-button"]} aria-label={ariaLabelText}>
       <Image src={cartIconSrc} alt="" width={24} height={24} priority />
       <span data-testid="cart-counter" aria-hidden="true">
         {totals.itemsCount}

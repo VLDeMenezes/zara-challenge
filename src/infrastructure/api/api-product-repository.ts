@@ -18,8 +18,7 @@ export class ApiProductRepository implements ProductRepository {
 
     if (filters?.search) queryParams.append("search", filters.search);
     if (filters?.limit) queryParams.append("limit", filters.limit.toString());
-    if (filters?.offset)
-      queryParams.append("offset", filters.offset.toString());
+    if (filters?.offset) queryParams.append("offset", filters.offset.toString());
 
     const url = `${this.baseUrl}/products${queryParams.toString() ? `?${queryParams.toString()}` : ""}`;
 

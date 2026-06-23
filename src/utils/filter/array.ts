@@ -9,10 +9,9 @@
  */
 export const removeDuplicates = <T, K extends keyof T = "id" & keyof T>(
   array: T[],
-  key: K = "id" as K,
+  key: K = "id" as K
 ): T[] => {
   return array.filter(
-    (item, index, self) =>
-      self.findIndex((p) => p[key] === item[key]) === index,
+    (item, index, self) => self.findIndex((p) => p[key] === item[key]) === index
   );
 };

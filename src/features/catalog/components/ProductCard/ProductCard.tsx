@@ -13,10 +13,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       tabIndex={-1}
       aria-label={`Ver detalles de ${brand} ${name}, precio ${basePrice} euros`}
     >
-      <article
-        className={styles["product-card"]}
-        aria-label={`${brand} ${name}`}
-      >
+      <article className={styles["product-card"]} aria-label={`${brand} ${name}`}>
         <div className={styles["product-card__image-wrapper"]}>
           <Image
             src={imageUrl || "/placeholder.webp"}
@@ -30,9 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <span className={styles["product-card__brand"]}>{brand}</span>
           <div className={styles["product-card__info-wrapper"]}>
             <div className={styles["product-card__name"]}>{name}</div>
-            <span className={styles["product-card__price"]}>
-              {basePrice} EUR
-            </span>
+            <span className={styles["product-card__price"]}>{basePrice} EUR</span>
           </div>
         </div>
       </article>

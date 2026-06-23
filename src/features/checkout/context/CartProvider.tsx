@@ -39,7 +39,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         (item) =>
           item.product.id === newItem.product.id &&
           item.selectedColor === newItem.selectedColor &&
-          item.selectedStorage === newItem.selectedStorage,
+          item.selectedStorage === newItem.selectedStorage
       );
 
       if (existingItemIndex > -1) {
@@ -55,7 +55,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const removeFromCart = (
     productId: string,
     color: ColorOption,
-    storage: StorageOption,
+    storage: StorageOption
   ) => {
     setCart((prevCart) =>
       prevCart.filter(
@@ -64,8 +64,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             item.product.id === productId &&
             item.selectedColor === color &&
             item.selectedStorage === storage
-          ),
-      ),
+          )
+      )
     );
   };
 
@@ -80,7 +80,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         acc.itemsCount += item.quantity;
         return acc;
       },
-      { subtotal: 0, itemsCount: 0 },
+      { subtotal: 0, itemsCount: 0 }
     );
   }, [cart]);
 
@@ -92,7 +92,5 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     totals,
   };
 
-  return (
-    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
 };

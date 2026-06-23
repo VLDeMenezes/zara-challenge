@@ -27,7 +27,7 @@
   font-size: 14px;
 }
 
-@media (min-width:728px) {
+@media (min-width: 728px) {
   .product-card {
     flex-direction: row;
   }
@@ -42,7 +42,7 @@
   }
 }
 
-@media (min-width:1024px) {
+@media (min-width: 1024px) {
   .product-card__image-wrapper {
     width: 510px;
     height: 630px;

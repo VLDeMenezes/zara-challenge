@@ -13,7 +13,7 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   scrollbar-width: thin;
-  scrollbar-color: #000000 #CCCCCC;
+  scrollbar-color: #000000 #cccccc;
   padding-bottom: 40px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .similar--carrousel::-webkit-scrollbar-track {
-  background-color: #CCCCCC;
+  background-color: #cccccc;
 }
 
 .similar--carrousel::-webkit-scrollbar-thumb {

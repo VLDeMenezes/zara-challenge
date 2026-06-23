@@ -12,12 +12,9 @@ describe("useDebounce hook", () => {
   it("Should debounce updates", () => {
     vi.useFakeTimers();
 
-    const { result, rerender } = renderHook(
-      ({ value }) => useDebounce(value, 400),
-      {
-        initialProps: { value: "iphone" },
-      },
-    );
+    const { result, rerender } = renderHook(({ value }) => useDebounce(value, 400), {
+      initialProps: { value: "iphone" },
+    });
 
     rerender({ value: "samsung" });
 
@@ -35,12 +32,9 @@ describe("useDebounce hook", () => {
   it("Should debounce updates", () => {
     vi.useFakeTimers();
 
-    const { result, rerender } = renderHook(
-      ({ value }) => useDebounce(value, 400),
-      {
-        initialProps: { value: "iphone" },
-      },
-    );
+    const { result, rerender } = renderHook(({ value }) => useDebounce(value, 400), {
+      initialProps: { value: "iphone" },
+    });
 
     rerender({ value: "samsung" });
 

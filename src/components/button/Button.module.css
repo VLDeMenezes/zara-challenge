@@ -2,13 +2,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
   text-transform: uppercase;
-  border: .5px solid transparent;
+  border: 0.5px solid transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
   outline: none;
   padding: 3px 7px;
   min-height: 56px;
@@ -32,7 +36,7 @@
 
 /* Variant Solid Black */
 .btn--primary {
-  background-color: #1B1A18;
+  background-color: #1b1a18;
   color: #ffffff;
   min-width: 260px;
 }
@@ -47,20 +51,20 @@
 
 .btn--primary:disabled {
   cursor: not-allowed;
-  background-color: #F3F2F2;
-  color: #C2BFBC;
+  background-color: #f3f2f2;
+  color: #c2bfbc;
 }
 
 /* Variant Transparent */
 .btn--secondary {
   background-color: #ffffff;
   color: #000000;
-  border-color: #1B1A18;
+  border-color: #1b1a18;
   min-width: 260px;
 }
 
 .btn--secondary:hover:not(:disabled) {
-  color: #504D49;
+  color: #504d49;
   border-color: #282624;
 }
 
@@ -71,14 +75,14 @@
 
 .btn--secondary:disabled {
   cursor: not-allowed;
-  color: #C2BFBC;
-  border-color: #DBD9D7;
+  color: #c2bfbc;
+  border-color: #dbd9d7;
 }
 
 /* Variant Destroy */
 .btn--destroy {
   background-color: #ffffff;
-  color: #DF0000;
+  color: #df0000;
   padding: 3px 0;
 }
 

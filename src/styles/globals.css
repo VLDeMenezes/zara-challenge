@@ -50,7 +50,7 @@ h4 {
   size: 12px;
 }
 
-@media (min-width:728) {
+@media (min-width: 728) {
   h2 {
     size: 24px;
   }

@@ -19,18 +19,14 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
   const uniqueColors = removeDuplicates(colorOptions, "name");
   const cheapestStorage = storageOptions.reduce(
     (min, option) => (option.price < min.price ? option : min),
-    storageOptions[0],
+    storageOptions[0]
   );
 
   const [selectedColor, setSelectedColor] = useState<ColorOption | null>(
-    uniqueColors[0] || null,
+    uniqueColors[0] || null
   );
-  const [selectedStorage, setSelectedStorage] = useState<StorageOption | null>(
-    null,
-  );
-  const displayedPrice = selectedStorage
-    ? selectedStorage.price
-    : cheapestStorage.price;
+  const [selectedStorage, setSelectedStorage] = useState<StorageOption | null>(null);
+  const displayedPrice = selectedStorage ? selectedStorage.price : cheapestStorage.price;
   const isReady = selectedColor != null && selectedStorage != null;
   const handleAddToCart = () => {
     if (!selectedColor || !selectedStorage) return;

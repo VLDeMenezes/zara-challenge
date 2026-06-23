@@ -1,7 +1,7 @@
 .picker--wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px
+  gap: 24px;
 }
 
 .color--name {
@@ -16,10 +16,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: solid 1px #CCCCCC;
+  border: solid 1px #cccccc;
   background-color: #ffffff;
   cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.1s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 .button--storage {
@@ -52,5 +54,5 @@
   flex-direction: row;
   align-items: center;
   margin-top: 8px;
-  gap: 16px
+  gap: 16px;
 }

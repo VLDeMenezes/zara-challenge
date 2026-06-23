@@ -6,17 +6,17 @@
   width: 100%;
   margin-bottom: 8px;
   padding: 12px 0;
-  gap: 12px
+  gap: 12px;
 }
 
 .search-input {
   width: 100%;
   padding-bottom: 8px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 300;
   border: none;
-  border-bottom: .5px solid #000000;
+  border-bottom: 0.5px solid #000000;
   outline: none;
   background-color: #ffffff;
   transition: border-color 0.2s ease;
@@ -25,7 +25,6 @@
 .search-input:focus {
   border-color: #000000;
 }
-
 
 .search-input::-webkit-search-decoration,
 .search-input::-webkit-search-cancel-button,

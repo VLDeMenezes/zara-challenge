@@ -13,9 +13,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ counter }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const [searchTerm, setSearchTerm] = useState(
-    searchParams.get("search") ?? "",
-  );
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") ?? "");
   const debouncedSearchTerm = useDebounce(searchTerm, 400);
 
   useEffect(() => {

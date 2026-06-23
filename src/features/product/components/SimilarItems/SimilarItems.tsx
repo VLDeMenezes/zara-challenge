@@ -4,14 +4,9 @@ import styles from "./SimilarItems.module.css";
 interface SimilarItemsProps {
   similarItems: SimilarProduct[];
 }
-const SimilarItemsCarrousel: React.FC<SimilarItemsProps> = ({
-  similarItems,
-}) => {
+const SimilarItemsCarrousel: React.FC<SimilarItemsProps> = ({ similarItems }) => {
   return (
-    <section
-      className={styles["similar--card"]}
-      aria-label="Similar products list"
-    >
+    <section className={styles["similar--card"]} aria-label="Similar products list">
       <h3>SIMILAR ITEMS</h3>
       <ul className={styles["similar--carrousel"]}>
         {similarItems.map((item) => (
