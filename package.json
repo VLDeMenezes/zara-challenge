@@ -27,6 +27,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "eslint-plugin-react-compiler": "^19.1.0-rc.2",
     "jsdom": "^29.1.1",
     "typescript": "^5",
     "vitest": "^4.1.9"
