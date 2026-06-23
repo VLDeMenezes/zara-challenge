@@ -5,6 +5,16 @@ interface CartGridProps {
   cart: CartItemType[];
 }
 const CartGrid: React.FC<CartGridProps> = ({ cart }) => {
+  if (cart.length < 1)
+    return (
+      <section aria-label="Cart list">
+        <span>
+          It looks like you don&apos;t have any items yet, you can explore them in the
+          catalog!
+        </span>
+      </section>
+    );
+
   return (
     <section aria-label="Cart list">
       <ul className={styles["cart-grid"]}>
