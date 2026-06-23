@@ -14,7 +14,12 @@ const FooterCheckout: React.FC = () => {
   return (
     <footer className={styles["footer"]}>
       <Link href={"/"}>
-        <Button aria-label="Continue shopping" variant="secondary" extraHeight>
+        <Button
+          data-testid="shopping-button"
+          aria-label="Continue shopping"
+          variant="secondary"
+          extraHeight
+        >
           <span>CONTINUE SHOPPING</span>
         </Button>
       </Link>
