@@ -4,3 +4,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+
+.cart-grid li {
+  list-style: none;
+}

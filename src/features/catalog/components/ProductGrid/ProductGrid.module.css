@@ -7,3 +7,7 @@
   padding-bottom: 52px;
   width: 100%;
 }
+
+.product-grid li {
+  list-style: none;
+}
