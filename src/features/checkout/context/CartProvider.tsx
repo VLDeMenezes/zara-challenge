@@ -70,26 +70,22 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     productId: string,
     color: ColorOption,
     storage: StorageOption,
-    amount: number // Puede ser 1 o -1
+    amount: number
   ) => {
-    setCart((prevCart) => {
-      return (
-        prevCart
-          .map((item) => {
-            if (
-              item.product.id === productId &&
-              item.selectedColor.name === color.name &&
-              item.selectedStorage.capacity === storage.capacity
-            ) {
-              const newQuantity = item.quantity + amount;
-              return { ...item, quantity: newQuantity };
-            }
-            return item;
-          })
-          // 💡 AUTO-ELIMINACIÓN: Si la cantidad cae a 0 o menos, lo barremos del carrito
-          .filter((item) => item.quantity > 0)
-      );
-    });
+    const updatedCart = cart
+      .map((item) => {
+        if (
+          item.product.id === productId &&
+          item.selectedColor.name === color.name &&
+          item.selectedStorage.capacity === storage.capacity
+        ) {
+          return { ...item, quantity: item.quantity + amount };
+        }
+        return item;
+      })
+      .filter((item) => item.quantity > 0);
+
+    saveCart(updatedCart);
   };
   const removeFromCart = (
     productId: string,
