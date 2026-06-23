@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: " Zara Challenge",
+  title: "Zara Challenge",
   description:
     "Explora nuestra amplia gama de smartphones. Encuentra las mejores marcas como Samsung, Apple y más al mejor precio.",
   keywords: [
@@ -34,22 +34,22 @@ type Props = {
 };
 const HomePage = async ({ searchParams }: Props) => {
   const resolvedParams = await searchParams;
-
-  //* LIMIT 20 IS UNIQUE FILTER DEFAULT OTHERS BY PARAMS *//
   const filters = {
     search: resolvedParams.search,
-    limit: resolvedParams.limit ? parseInt(resolvedParams.limit, 10) : 20,
+    limit: resolvedParams.limit ? parseInt(resolvedParams.limit, 10) : undefined,
     offset: resolvedParams.offset ? parseInt(resolvedParams.offset, 10) : undefined,
   };
   const products = await productRepository.getAll(filters);
   const uniqueProducts = removeDuplicates(products);
+  const limitToApply = filters.limit ?? 20;
+  const finalCatalogProducts = uniqueProducts.slice(0, limitToApply);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <Suspense fallback={<div style={{ height: "45px" }}>Loading search...</div>}>
-          <SearchBar counter={uniqueProducts.length} />
+          <SearchBar counter={finalCatalogProducts.length} />
         </Suspense>
-        <ProductGrid products={uniqueProducts} />
+        <ProductGrid products={finalCatalogProducts} />
       </main>
     </div>
   );
