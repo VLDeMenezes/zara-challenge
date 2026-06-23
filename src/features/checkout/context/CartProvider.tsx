@@ -1,57 +1,70 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo, useSyncExternalStore } from "react";
 import { CartContext } from "./CartContext";
 import { CartItem } from "@/core/entities/cart";
 import { ColorOption, StorageOption } from "@/core/entities/product";
+const cartStore = {
+  subscribe(onStoreChange: () => void) {
+    window.addEventListener("storage", onStoreChange);
+    return () => window.removeEventListener("storage", onStoreChange);
+  },
+  getSnapshot() {
+    return localStorage.getItem("zara_cart") || "[]";
+  },
+  getServerSnapshot() {
+    return "[]";
+  },
+};
 
 interface CartProviderProps {
   children: React.ReactNode;
 }
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  "use memo";
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window === "undefined") return [];
+  const rawCart = useSyncExternalStore(
+    cartStore.subscribe,
+    cartStore.getSnapshot,
+    cartStore.getServerSnapshot
+  );
 
-    const storedCart = localStorage.getItem("zara_cart");
-    if (storedCart) {
-      try {
-        return JSON.parse(storedCart);
-      } catch (error) {
-        console.error("Error parsing cart from localStorage", error);
-      }
+  const cart = useMemo<CartItem[]>(() => {
+    try {
+      return JSON.parse(rawCart);
+    } catch {
+      return [];
     }
-    return [];
-  });
+  }, [rawCart]);
 
-  useEffect(() => {
-    if (cart.length > 0) {
-      localStorage.setItem("zara_cart", JSON.stringify(cart));
-    } else if (localStorage.getItem("zara_cart")) {
+  const saveCart = (newCart: CartItem[]) => {
+    if (newCart.length > 0) {
+      localStorage.setItem("zara_cart", JSON.stringify(newCart));
+    } else {
       localStorage.removeItem("zara_cart");
     }
-  }, [cart]);
+    window.dispatchEvent(new Event("storage"));
+  };
 
   const addToCart = (newItem: CartItem) => {
-    setCart((prevCart) => {
-      const existingItemIndex = prevCart.findIndex(
-        (item) =>
-          item.product.id === newItem.product.id &&
-          item.selectedColor.name === newItem.selectedColor.name &&
-          item.selectedStorage.capacity === newItem.selectedStorage.capacity
+    const existingItemIndex = cart.findIndex(
+      (item) =>
+        item.product.id === newItem.product.id &&
+        item.selectedColor.name === newItem.selectedColor.name &&
+        item.selectedStorage.capacity === newItem.selectedStorage.capacity
+    );
+
+    let updatedCart: CartItem[];
+    if (existingItemIndex > -1) {
+      updatedCart = cart.map((item, index) =>
+        index === existingItemIndex
+          ? { ...item, quantity: item.quantity + newItem.quantity }
+          : item
       );
+    } else {
+      updatedCart = [...cart, newItem];
+    }
 
-      if (existingItemIndex > -1) {
-        return prevCart.map((item, index) =>
-          index === existingItemIndex
-            ? { ...item, quantity: item.quantity + newItem.quantity }
-            : item
-        );
-      }
-
-      return [...prevCart, newItem];
-    });
+    saveCart(updatedCart);
   };
 
   const removeFromCart = (
@@ -59,26 +72,23 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     color: ColorOption,
     storage: StorageOption
   ) => {
-    setCart((prevCart) =>
-      prevCart.filter(
-        (item) =>
-          !(
-            item.product.id === productId &&
-            item.selectedColor === color &&
-            item.selectedStorage === storage
-          )
-      )
+    const updatedCart = cart.filter(
+      (item) =>
+        !(
+          item.product.id === productId &&
+          item.selectedColor.name === color.name &&
+          item.selectedStorage.capacity === storage.capacity
+        )
     );
+    saveCart(updatedCart);
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => saveCart([]);
 
   const totals = useMemo(() => {
     return cart.reduce(
       (acc, item) => {
-        const itemPrice = item.selectedStorage.price;
-
-        acc.subtotal += itemPrice * item.quantity;
+        acc.subtotal += item.selectedStorage.price * item.quantity;
         acc.itemsCount += item.quantity;
         return acc;
       },
