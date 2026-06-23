@@ -4,8 +4,9 @@ import { CartProvider } from "@/features/checkout/context/CartProvider";
 import Header from "@/components/header/Header";
 
 export const metadata: Metadata = {
-  title: "Zara Challange",
-  description: "Simple E-commerce for a challange",
+  title: "Zara Challenge",
+  description: "Simple E-commerce for a challenge",
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
