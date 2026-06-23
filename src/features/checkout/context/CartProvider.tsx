@@ -38,14 +38,16 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       const existingItemIndex = prevCart.findIndex(
         (item) =>
           item.product.id === newItem.product.id &&
-          item.selectedColor === newItem.selectedColor &&
-          item.selectedStorage === newItem.selectedStorage
+          item.selectedColor.name === newItem.selectedColor.name &&
+          item.selectedStorage.capacity === newItem.selectedStorage.capacity
       );
 
       if (existingItemIndex > -1) {
-        const newCart = [...prevCart];
-        newCart[existingItemIndex].quantity += newItem.quantity;
-        return newCart;
+        return prevCart.map((item, index) =>
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity + newItem.quantity }
+            : item
+        );
       }
 
       return [...prevCart, newItem];
@@ -74,7 +76,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const totals = useMemo(() => {
     return cart.reduce(
       (acc, item) => {
-        const itemPrice = item.product.basePrice;
+        const itemPrice = item.selectedStorage.price;
 
         acc.subtotal += itemPrice * item.quantity;
         acc.itemsCount += item.quantity;

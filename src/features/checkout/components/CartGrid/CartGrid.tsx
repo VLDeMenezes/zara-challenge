@@ -8,11 +8,14 @@ const CartGrid: React.FC<CartGridProps> = ({ cart }) => {
   return (
     <section aria-label="Cart list">
       <ul className={styles["cart-grid"]}>
-        {cart.map((item) => (
-          <li key={item.product.id}>
-            <CartItem cart={item} />
-          </li>
-        ))}
+        {cart.map((item) => {
+          const uniqueVariantKey = `${item.product.id}-${item.selectedColor.name}-${item.selectedStorage.capacity}`;
+          return (
+            <li key={uniqueVariantKey}>
+              <CartItem cart={item} />
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
