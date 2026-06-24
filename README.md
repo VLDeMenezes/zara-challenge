@@ -2,7 +2,7 @@
 
 Application developed as a challenge for Napptilus using Next.js and TypeScript.
 
-The proyect focus on performance, maintainability, and scalability by leveraging Server-Side Rendering (SSR), a feature-based structure, and a domain-oriented architecture.
+The project focus on performance, maintainability, and scalability by leveraging Server-Side Rendering (SSR), a feature-based structure, and a domain-oriented architecture.
 
 Users can browse a smartphone catalog, search products, view product details, configure variants, manage a shopping cart, and complete the checkout process.
 
@@ -18,15 +18,16 @@ ESLint
 ## Features
 
 - SSR product catalog rendering
-- Search using URL search parameters
-- Product detail view with variant selection (colors and storage) with price and image variations
-- Similar product section
-- Shopping cart management
-- Cart persistence using local storage
-- Checkout
-- accessibility for screen readers
-- Responsive design
-- Scalable architecture based on separation of responsibilities
+
+* Search using URL search parameters
+* Product detail view with variant selection (colors and storage) with price and image variations
+* Similar product section
+* Shopping cart management
+* Cart persistence using local storage
+* Checkout
+* accessibility for screen readers
+* Responsive design
+* Scalable architecture based on separation of responsibilities
 
 ## Architecture
 
@@ -76,6 +77,22 @@ This prevents infrastructure concerns from leaking into business logic.
 ### Feature Isolation
 
 Each business capability is organized into a dedicated feature module, making future maintenance and expansion simpler.
+
+### remove duplicates
+
+The backend may not perfect, because that it's implement a remove duplicates to show a clean products catalog
+
+### debounce searches
+
+User can use the search bar, but some times takes time to fully write what it's looking, because that it's delayed the search fetch
+
+## Deployment
+
+The challenge will be deploy on netlify a will, you can check the main production build: https://zara-challange.netlify.app
+
+## New Features
+
+The are some new features out of the base challenge, like manual pagination, quantity selector on Cart Items, that you can find on the newFeatures branch or https://newfeatures--zara-challange.netlify.app
 
 ## Running the project
 
